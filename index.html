@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BTC Mining | Official Store</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#0b1020;color:white}
+header{background:#151d32;padding:18px 15px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #293653}
+.logo{font-size:22px;font-weight:bold;color:#f7b731}
+.logo span{color:white}
+button{cursor:pointer;border:0;border-radius:8px;padding:12px 16px;font-weight:bold}
+.hero{padding:35px 20px;text-align:center;background:linear-gradient(140deg,#172747,#0b1020)}
+.hero h1{font-size:32px;margin:12px 0;color:#ffbd38}
+.hero p{color:#c6cee0;line-height:1.7}
+.primary{background:#ffb82e;color:#151515;margin-top:12px}
+section{padding:22px 15px}
+h2{font-size:23px}
+.notice{background:#19233a;border:1px solid #354666;border-radius:12px;padding:15px;color:#dbe5f8;line-height:1.6}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:#151e33;border:1px solid #2b3955;border-radius:12px;padding:14px}
+.icon{font-size:35px}
+.card h3{font-size:16px}
+.card p{font-size:13px;color:#c1cbe0;line-height:1.5}
+.price{color:#ffbd38;font-size:18px;font-weight:bold}
+.small{font-size:12px;color:#aab6cd}
+.card button{width:100%;background:#ffb82e;margin-top:10px}
+.links{display:flex;gap:10px;flex-wrap:wrap}
+.links a{color:#ffbd38}
+footer{text-align:center;padding:25px 15px;background:#151d32;color:#b7c2d8;font-size:13px;line-height:1.8}
+input,textarea{width:100%;padding:12px;margin:7px 0;background:#10182a;border:1px solid #354666;color:white;border-radius:7px}
+@media(max-width:360px){.grid{grid-template-columns:1fr}.hero h1{font-size:27px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">₿ <span>BTC MINING</span></div>
+  <button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Products</button>
+</header>
+
+<div class="hero">
+  <div style="font-size:55px">₿</div>
+  <h1>BTC Mining Store</h1>
+  <p>Explore Bitcoin mining hardware, accessories and educational resources.</p>
+  <button class="primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Explore Products ↓</button>
+</div>
+
+<section>
+  <h2>Welcome to BTC Mining</h2>
+  <div class="notice">
+    हमारी वेबसाइट पर Bitcoin mining से जुड़े उत्पादों और जानकारी को एक्सप्लोर करें।
+    खरीदारी से पहले उत्पाद की कीमत, बिजली की खपत, हैशरेट और वारंटी की पुष्टि करें।
+    <br><br>
+    <b>ध्यान दें:</b> Bitcoin mining में लाभ की गारंटी नहीं होती। बिजली, उपकरण और नेटवर्क की लागत के कारण नुकसान भी हो सकता है।
+  </div>
+</section>
+
+<section id="products">
+  <h2>🛒 Our Products</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="icon">⛏️</div>
+      <h3>ASIC Miner</h3>
+      <p>Bitcoin mining hardware. कीमत और उपलब्धता विक्रेता से जाँचें।</p>
+      <div class="price">Price on request</div>
+      <button onclick="contact('ASIC Miner')">Enquire Now</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">🔌</div>
+      <h3>Power Supply</h3>
+      <p>Mining equipment के लिए compatible power supply।</p>
+      <div class="price">Price on request</div>
+      <button onclick="contact('Power Supply')">Enquire Now</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">🌬️</div>
+      <h3>Cooling Equipment</h3>
+      <p>Mining setup के लिए ventilation और cooling accessories।</p>
+      <div class="price">Price on request</div>
+      <button onclick="contact('Cooling Equipment')">Enquire Now</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">📘</div>
+      <h3>Mining Guide</h3>
+      <p>Mining की लागत, जोखिम और setup के बारे में सीखें।</p>
+      <div class="price">Information</div>
+      <button onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Learn More</button>
+    </div>
+  </div>
+  <p class="small">ये उत्पाद उदाहरण हैं। वास्तविक कीमत, स्टॉक और विक्रेता की जानकारी अभी जोड़ी जानी बाकी है।</p>
+</section>
+
+<section id="about">
+  <h2>📋 About Us</h2>
+  <div class="notice">
+    BTC Mining एक mining hardware और educational store का शुरुआती वेबसाइट टेम्पलेट है।
+    वास्तविक खरीदारी शुरू करने से पहले उत्पादों, संपर्क जानकारी, शिपिंग, रिफंड और प्राइवेसी की शर्तें जोड़ना आवश्यक है।
+  </div>
+</section>
+
+<section id="contact">
+  <h2>📩 Contact Us</h2>
+  <div class="notice">
+    <p>उत्पाद के बारे में पूछताछ करने के लिए नीचे जानकारी भरें।</p>
+    <form onsubmit="event.preventDefault();alert('यह केवल डेमो फॉर्म है। अभी संदेश भेजा नहीं जाता।');">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="4" required></textarea>
+      <button class="primary" type="submit">Submit Enquiry</button>
+    </form>
+    <p class="small">यह फॉर्म अभी संदेश सेव या भेजता नहीं है।</p>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">₿ BTC MINING</div>
+  <p>Mining Hardware & Educational Resources</p>
+  <div class="links">
+    <a href="#products">Products</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <p>© 2026 BTC Mining. All rights reserved.</p>
+  <p>Cryptocurrency mining involves financial risk. No profits are guaranteed.</p>
+</footer>
+
+<script>
+function contact(product){
+  alert(product + ': वास्तविक विक्रेता और संपर्क विवरण अभी जोड़े जाने बाकी हैं।');
+}
+</script>
+</body>
+</html>
