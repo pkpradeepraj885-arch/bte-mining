@@ -1,151 +1,840 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BTC Mining</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;background:#0b1020;color:#fff;font-family:Arial,sans-serif}
-header{background:#151e32;padding:16px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:21px;font-weight:bold;color:#ffbd38}
-button{border:0;border-radius:8px;padding:11px 14px;font-weight:bold;cursor:pointer}
-.btn{background:#ffbd38;color:#111}
-nav{display:flex;justify-content:space-around;background:#1b2740;padding:12px 4px;position:sticky;top:0}
-nav a{color:white;text-decoration:none;font-size:13px}
-.hero{text-align:center;padding:35px 18px;background:linear-gradient(145deg,#243b63,#0b1020)}
-.hero .coin{font-size:60px}
-h1{color:#ffbd38;font-size:30px}
-p{line-height:1.6;color:#cbd5e7}
-section{padding:20px 15px}
-h2{font-size:22px}
-.notice{background:#17233b;border:1px solid #344766;padding:15px;border-radius:12px;line-height:1.7;color:#e1e8f5}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.card{background:#151f35;border:1px solid #2c3c59;border-radius:12px;padding:14px}
-.icon{font-size:36px}
-.card h3{font-size:16px}
-.card p{font-size:13px}
-.price{color:#ffbd38;font-weight:bold}
-.card button{width:100%;margin-top:10px;background:#ffbd38}
-.row{display:flex;gap:10px;flex-wrap:wrap}
-.row button{flex:1}
-input,textarea{width:100%;padding:12px;margin:7px 0;border:1px solid #354766;background:#0d1527;color:white;border-radius:8px}
-footer{text-align:center;background:#151e32;padding:24px;color:#aebbd0;font-size:13px}
-.small{font-size:12px;color:#aebbd0}
-@media(max-width:360px){.grid{grid-template-columns:1fr}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>GRW Mining Group</title>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: #f7f9fa;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .mobile-container {
+      width: 100%;
+      max-width: 480px;
+      min-height: 100vh;
+      background: #fafafa;
+      position: relative;
+      padding-bottom: 70px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.08);
+      overflow-x: hidden;
+    }
+
+    /* Common Header for Pages */
+    .top-header {
+      background: linear-gradient(180deg, #ffd740 0%, #ffc400 100%);
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-title {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #1a1a1a;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .header-icons {
+      display: flex;
+      gap: 14px;
+      font-size: 19px;
+      color: #222;
+    }
+
+    .flag-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    /* Tab Pages */
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* HOME SCREEN */
+    .banner-wrapper {
+      padding: 12px 14px 6px;
+      background: #ffd740;
+    }
+
+    .banner-img {
+      width: 100%;
+      height: 165px;
+      border-radius: 14px;
+      object-fit: cover;
+      display: block;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    }
+
+    .notice-bar {
+      margin: 10px 14px;
+      background: #fff;
+      border-radius: 25px;
+      display: flex;
+      align-items: center;
+      padding: 8px 14px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      font-size: 13px;
+      font-weight: 600;
+      color: #444;
+      gap: 10px;
+    }
+
+    .notice-icon {
+      background: #ff7043;
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .action-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      padding: 12px 10px;
+      text-align: center;
+      gap: 6px;
+    }
+
+    .action-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .action-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 20px;
+      margin-bottom: 5px;
+      box-shadow: 0 4px 8px rgba(245, 124, 0, 0.25);
+    }
+
+    .action-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .ops-pill {
+      background: #c8e6c9;
+      margin: 10px 14px;
+      padding: 9px 14px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 700;
+      color: #2e7d32;
+    }
+
+    .income-card {
+      margin: 10px 14px;
+      background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);
+      border-radius: 16px;
+      padding: 16px;
+      position: relative;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+    }
+
+    .income-card .title {
+      font-size: 13px;
+      color: #555;
+      font-weight: 600;
+    }
+
+    .income-card .amount {
+      font-size: 26px;
+      font-weight: 800;
+      color: #111;
+      margin: 4px 0 12px;
+    }
+
+    .income-flex {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding-top: 10px;
+    }
+
+    .income-flex .sub-title {
+      font-size: 11px;
+      color: #666;
+    }
+
+    .income-flex .sub-amount {
+      font-size: 14px;
+      font-weight: 700;
+      color: #222;
+      margin-top: 2px;
+    }
+
+    /* Floating service */
+    .float-service {
+      position: absolute;
+      right: 14px;
+      top: 18px;
+      background: #ff5722;
+      color: #fff;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 10px rgba(255,87,34,0.4);
+      cursor: pointer;
+    }
+
+    /* Sub Tabs (Product Screen) */
+    .sub-tabs {
+      display: flex;
+      justify-content: space-around;
+      background: #fff;
+      padding: 12px 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .sub-tab-btn {
+      font-size: 15px;
+      font-weight: 700;
+      color: #888;
+      cursor: pointer;
+      position: relative;
+      padding-bottom: 6px;
+    }
+
+    .sub-tab-btn.active {
+      color: #111;
+    }
+
+    .sub-tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+      width: 80%;
+      height: 3px;
+      background: #ffb300;
+      border-radius: 2px;
+    }
+
+    /* PRODUCT CARDS */
+    .product-list {
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .product-card {
+      background: #e0f7fa;
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      position: relative;
+    }
+
+    .product-card.vip-bg {
+      background: #fffde7;
+    }
+
+    .product-card.special-bg {
+      background: #fff3e0;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #111;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-hot {
+      background: #f44336;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    .card-price {
+      font-size: 18px;
+      font-weight: 800;
+      color: #e53935;
+    }
+
+    .badge-rate {
+      display: inline-block;
+      background: #e8f5e9;
+      color: #2e7d32;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-top: 4px;
+    }
+
+    .card-body {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .product-thumb {
+      width: 95px;
+      height: 95px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: #000;
+    }
+
+    .product-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12px;
+      color: #555;
+    }
+
+    .info-line {
+      background: rgba(255,255,255,0.7);
+      padding: 3px 8px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      padding-top: 8px;
+    }
+
+    .countdown-timer {
+      background: #ffb300;
+      color: #111;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      letter-spacing: 1px;
+    }
+
+    .btn-buy {
+      background: #ffb300;
+      color: #222;
+      border: none;
+      font-weight: 700;
+      padding: 7px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 13px;
+      box-shadow: 0 2px 6px rgba(255, 179, 0, 0.4);
+    }
+
+    /* PERSONAL CENTER */
+    .profile-card {
+      background: linear-gradient(180deg, #ffd740 0%, #ffc400 100%);
+      padding: 20px 16px 30px;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+    }
+
+    .user-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+    }
+
+    .avatar-logo {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: #1b5e20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 900;
+      font-size: 18px;
+      border: 3px solid #fff;
+    }
+
+    .user-info .user-id {
+      font-size: 18px;
+      font-weight: 800;
+      color: #111;
+    }
+
+    .vip-tag {
+      background: #fff;
+      color: #ff9800;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 12px;
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    .btn-team {
+      position: absolute;
+      right: 0;
+      background: #212121;
+      color: #fff;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .balance-box {
+      margin: -20px 14px 14px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    .balance-grid {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .balance-item .lbl {
+      font-size: 11px;
+      color: #888;
+      font-weight: 600;
+    }
+
+    .balance-item .val {
+      font-size: 20px;
+      font-weight: 800;
+      color: #111;
+      margin-top: 2px;
+    }
+
+    .balance-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-recharge-pill {
+      flex: 1;
+      background: #fffde7;
+      border: 1px solid #ffe082;
+      color: #f57f17;
+      padding: 8px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .btn-withdraw-pill {
+      flex: 1;
+      background: #ffebee;
+      border: 1px solid #ffcdd2;
+      color: #e53935;
+      padding: 8px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .profile-nav-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 10px 14px;
+      text-align: center;
+      background: #fff;
+      margin: 0 14px 14px;
+      border-radius: 14px;
+    }
+
+    .p-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #444;
+      cursor: pointer;
+    }
+
+    .p-nav-item i {
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .welfare-banner {
+      margin: 0 14px 14px;
+      background: linear-gradient(135deg, #ff5252 0%, #d50000 100%);
+      border-radius: 14px;
+      padding: 14px 18px;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(213, 0, 0, 0.25);
+      cursor: pointer;
+    }
+
+    .welfare-banner h4 {
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .welfare-banner p {
+      font-size: 11px;
+      opacity: 0.9;
+      margin-top: 3px;
+    }
+
+    .menu-list {
+      background: #fff;
+      margin: 0 14px 20px;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      border-bottom: 1px solid #f2f2f2;
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+
+    .menu-item-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .menu-item-left i {
+      font-size: 16px;
+      color: #666;
+    }
+
+    /* BOTTOM NAV BAR */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      max-width: 480px;
+      height: 60px;
+      background: #fff;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border-top: 1px solid #eee;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.04);
+      z-index: 100;
+    }
+
+    .nav-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      color: #777;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .nav-btn i {
+      font-size: 20px;
+    }
+
+    .nav-btn.active {
+      color: #ff9800;
+    }
+
+    .vip-center-btn {
+      position: relative;
+      top: -12px;
+    }
+
+    .vip-circle-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: #ffb300;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 4px 10px rgba(255, 179, 0, 0.45);
+      border: 3px solid #fff;
+    }
+
+    /* POPUP / MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+    }
+
+    .modal-box {
+      background: #fff;
+      width: 100%;
+      max-width: 340px;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .modal-title {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .modal-input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 12px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .modal-btn-confirm {
+      width: 100%;
+      padding: 10px;
+      background: #ff9800;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .modal-btn-cancel {
+      width: 100%;
+      margin-top: 8px;
+      padding: 8px;
+      background: transparent;
+      color: #777;
+      border: none;
+      cursor: pointer;
+      font-size: 13px;
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">₿ BTC MINING</div>
-  <button class="btn" onclick="go('products')">Products</button>
-</header>
+  <div class="mobile-container">
 
-<nav>
-  <a href="#home">🏠 Home</a>
-  <a href="#products">🛒 Products</a>
-  <a href="#account">👤 Account</a>
-  <a href="#contact">📞 Contact</a>
-</nav>
+    <!-- TAB 1: HOME -->
+    <div id="tab-home" class="tab-content active">
+      <div class="top-header">
+        <div class="brand-title">
+          <i class="fa-solid fa-cube text-warning" style="color: #1b5e20;"></i>
+          <span>GRW Mining</span>
+        </div>
+        <img class="flag-icon" src="https://flagcdn.com/w40/in.png" alt="India">
+      </div>
 
-<div class="hero" id="home">
-  <div class="coin">₿</div>
-  <h1>BTC Mining Store</h1>
-  <p>Bitcoin mining hardware, accessories and learning resources — all in one place.</p>
-  <button class="btn" onclick="go('products')">Explore Products ↓</button>
-</div>
+      <div class="banner-wrapper">
+        <img class="banner-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&auto=format&fit=crop" alt="Mining Farm">
+      </div>
 
-<section>
-  <h2>Welcome to BTC Mining</h2>
-  <div class="notice">
-    Bitcoin mining के लिए सही उपकरण चुनें। खरीदने से पहले कीमत, बिजली की खपत, हैशरेट, वारंटी और विक्रेता की जानकारी जाँचें।
-    <br><br><b>महत्वपूर्ण:</b> Mining में लाभ की गारंटी नहीं होती। बिजली और उपकरणों की लागत से नुकसान हो सकता है।
-  </div>
-</section>
+      <div class="notice-bar">
+        <div class="notice-icon"><i class="fa-solid fa-bullhorn"></i></div>
+        <marquee behavior="scroll" direction="left" scrollamount="4">GRW's Official Smart Computing Contract Platform is Live!</marquee>
+      </div>
 
-<section id="products">
-  <h2>⛏️ Our Products</h2>
-  <div class="grid">
-    <div class="card">
-      <div class="icon">⛏️</div>
-      <h3>ASIC Miner</h3>
-      <p>Bitcoin mining hardware की जानकारी।</p>
-      <div class="price">कीमत पूछें</div>
-      <button onclick="enquire('ASIC Miner')">Enquire</button>
+      <div class="action-grid">
+        <div class="action-btn" onclick="openRechargeModal()">
+          <div class="action-circle"><i class="fa-solid fa-wallet"></i></div>
+          <span class="action-label">Recharge</span>
+        </div>
+        <div class="action-btn" onclick="switchNav('product')">
+          <div class="action-circle"><i class="fa-solid fa-chart-line"></i></div>
+          <span class="action-label">Task</span>
+        </div>
+        <div class="action-btn" onclick="alert('GRW Notice: System works 24/7 uninterrupted.')">
+          <div class="action-circle"><i class="fa-solid fa-envelope-open-text"></i></div>
+          <span class="action-label">Notice</span>
+        </div>
+        <div class="action-btn" onclick="handleDailyCheckin()">
+          <div class="action-circle"><i class="fa-solid fa-calendar-check"></i></div>
+          <span class="action-label">Check-in</span>
+        </div>
+        <div class="action-btn" onclick="openWithdrawModal()">
+          <div class="action-circle"><i class="fa-solid fa-money-bill-transfer"></i></div>
+          <span class="action-label">Withdraw</span>
+        </div>
+      </div>
+
+      <div class="ops-pill">
+        <span>Security Operations</span>
+        <span>3 years, 9 months, 8 days</span>
+      </div>
+
+      <div class="income-card">
+        <div class="float-service" onclick="alert('Customer Care Telegram: @GRW_Support')">
+          <i class="fa-solid fa-headset"></i>
+        </div>
+        <div class="title">Cumulative income</div>
+        <div class="amount" id="home-cumulative">₹ 444.00</div>
+        <div class="income-flex">
+          <div>
+            <div class="sub-title">Today's earnings</div>
+            <div class="sub-amount" id="home-today">₹ 0.00</div>
+          </div>
+          <div>
+            <div class="sub-title">Yesterday's earnings</div>
+            <div class="sub-amount">₹ 30.00</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="card">
-      <div class="icon">🔌</div>
-      <h3>Power Supply</h3>
-      <p>Compatible power supply की जानकारी।</p>
-      <div class="price">कीमत पूछें</div>
-      <button onclick="enquire('Power Supply')">Enquire</button>
-    </div>
-    <div class="card">
-      <div class="icon">🌬️</div>
-      <h3>Cooling Equipment</h3>
-      <p>Ventilation और cooling accessories।</p>
-      <div class="price">कीमत पूछें</div>
-      <button onclick="enquire('Cooling Equipment')">Enquire</button>
-    </div>
-    <div class="card">
-      <div class="icon">📘</div>
-      <h3>Mining Guide</h3>
-      <p>Mining setup और जोखिम के बारे में सीखें।</p>
-      <div class="price">जानकारी</div>
-      <button onclick="go('about')">Learn More</button>
-    </div>
-  </div>
-  <p class="small">ये उदाहरण उत्पाद हैं। वास्तविक कीमत, स्टॉक और विक्रेता विवरण जोड़ना बाकी है।</p>
-</section>
 
-<section id="account">
-  <h2>👤 Personal Center</h2>
-  <div class="notice">
-    अभी यह केवल डिजाइन है। सुरक्षित अकाउंट और Login सुविधा अभी उपलब्ध नहीं है।
-    <div class="row" style="margin-top:14px">
-      <button class="btn" onclick="alert('Login सिस्टम अभी जोड़ा नहीं गया है।')">Login</button>
-      <button class="btn" onclick="alert('Registration सिस्टम अभी जोड़ा नहीं गया है।')">Register</button>
-    </div>
-    <p class="small">अपना पासवर्ड या बैंक जानकारी इस पेज पर न डालें।</p>
-  </div>
-</section>
+    <!-- TAB 2: PRODUCT -->
+    <div id="tab-product" class="tab-content">
+      <div class="top-header" style="justify-content: center;">
+        <span style="font-weight: 800; font-size: 18px;">Products</span>
+      </div>
 
-<section id="about">
-  <h2>ℹ️ About Us</h2>
-  <div class="notice">
-    BTC Mining एक शुरुआती mining hardware और educational store वेबसाइट है। वास्तविक बिक्री से पहले उत्पाद, संपर्क विवरण, डिलीवरी, रिफंड और गोपनीयता की शर्तें जोड़ें।
-  </div>
-</section>
+      <div class="sub-tabs">
+        <div class="sub-tab-btn active" onclick="switchSubProduct('general', this)">General</div>
+        <div class="sub-tab-btn" onclick="switchSubProduct('vip', this)">VIP</div>
+        <div class="sub-tab-btn" onclick="switchSubProduct('special', this)">Special</div>
+      </div>
 
-<section id="contact">
-  <h2>📞 Contact Us</h2>
-  <div class="notice">
-    <form onsubmit="event.preventDefault();alert('यह केवल डेमो फॉर्म है। आपका संदेश सेव या भेजा नहीं गया।')">
-      <input placeholder="आपका नाम" required>
-      <input type="email" placeholder="ईमेल" required>
-      <textarea rows="4" placeholder="आपका संदेश" required></textarea>
-      <button class="btn" type="submit">Send Enquiry</button>
-    </form>
-    <p class="small">यह फॉर्म अभी संदेश भेजता या सेव नहीं करता।</p>
-  </div>
-</section>
+      <!-- General Products -->
+      <div id="sub-general" class="product-list">
+        <!-- Item 1 -->
+        <div class="product-card">
+          <div class="card-top">
+            <div>
+              <div class="card-title">DASH Smart Mining <span class="badge-hot">HOT</span></div>
+              <span class="badge-rate">+5.20% T+1</span>
+            </div>
+            <div class="card-price">₹ 3100</div>
+          </div>
+          <div class="card-body">
+            <img class="product-thumb" src="https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=200&auto=format&fit=crop" alt="Rig">
+            <div class="product-info">
+              <div class="info-line"><span>Total income:</span> <b>₹ 32239</b></div>
+              <div class="info-line"><span>Quota:</span> <b>4</b></div>
+              <div class="info-line"><span>Period:</span> <b>200 Days</b></div>
+              <div class="info-line"><span>Daily income:</span> <b>₹ 161.2</b></div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="countdown-timer">40 : 57 : 41</div>
+            <button class="btn-buy" onclick="buyProduct(3100)">Snap up</button>
+          </div>
+        </div>
 
-<footer>
-  <div class="logo">₿ BTC MINING</div>
-  <p>Mining Hardware & Educational Resources</p>
-  <p>© 2026 BTC Mining</p>
-  <p>Cryptocurrency mining में वित्तीय जोखिम है। किसी लाभ की गारंटी नहीं है।</p>
-</footer>
-
-<script>
-function go(id){
-  document.getElementById(id).scrollIntoView({behavior:'smooth'});
-}
-function enquire(product){
-  alert(product+' के वास्तविक विक्रेता और संपर्क विवरण अभी जोड़े जाने बाकी हैं।');
-}
-</script>
-
-</body>
-</html>
+        <!-- Item 2 -->
+        <div class="product-card">
+          <div class="card-top">
+            <div>
+              <div class="card-title">DASH Quantitative Fund <span class="badge-hot">HOT</span></div>
+              <span class="badge-rate">+100.00% T+60</span>
+            </div>
+            <div class="card-price">₹ 0</div>
+          </div>
+          <div class="card-body">
+            <img class="product-thumb" src="https://images.unsplash.com/photo-1622979135225-d2ba269bc1df?w=200&auto=format&fit=crop" alt="Node">
+            <div class="product-info">
+              <div class="info-line"><span>Total income:</span> <b>₹ 18000</b></div>
+              <div class="info-line"><span>Quota:</span> <b>1</b></div>
+              <div class="info-line"><span>Period:</span> <b>60 Days</b></div>
+              <div class="info-line"><span>Daily income:</span> <b>₹ 300</b></div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="countdown-timer">40 : 57 : 41</div>
+            <button class="btn-buy" onclick="buyProduct(0)">Snap up</button>
+          </div>
+        </d
